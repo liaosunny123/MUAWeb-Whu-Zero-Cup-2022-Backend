@@ -1,0 +1,8 @@
+//
+// Created by epicmo on 22-10-14.
+//
+
+#ifndef MAIN_CC_RESPONCONTROLLER_H
+#define MAIN_CC_RESPONCONTROLLER_H
+
+#endif //MAIN_CC_RESPONCONTROLLER_H

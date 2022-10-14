@@ -10,6 +10,7 @@ namespace MUAWeb{
     class Utility{
     public:
         static std::string generateUUID();
+        static std::string generateUnsignedUUID();
     };
 }
 #endif //MUAWEBBACKEND_UTILITY_H

@@ -16,13 +16,13 @@ namespace MUAWeb{
         static User getUser(std::string);
         static void addUser(User);
         static void removeUser(User);
-        static void editPassword(User);
+        static void editPassword(User,std::string);
         //Passage:
         static void addPassage(Model::Passage);
         static void removePassage(Model::Passage);
         static Model::Passage getPassage(int);
         static void getPassageNumber(Model::Category);
-        static Model::Passage* getFullPassage(Model::Category,int number);
+        static Model::Passage* getFullPassage(Model::Category,int);
         //School:
         static void addSchool(Model::School);
         static void removeSchool(Model::School);
