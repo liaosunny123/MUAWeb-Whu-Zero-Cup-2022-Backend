@@ -1,6 +1,7 @@
 //
 // Created by epicmo on 22-10-14.
 //
+
 #include "DataController.h"
 namespace MUAWeb{
     std::string DataController::getPassword(std::string){

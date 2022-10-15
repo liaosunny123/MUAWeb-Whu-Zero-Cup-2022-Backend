@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/intellij+all,visualstudio,visualstudiocode,cmake,c,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij+all,visualstudio,visualstudiocode,cmake,c,c++
 
+### UserConfig ###
+# DBConfig
+database.json
 ### C ###
 # Prerequisites
 *.d
@@ -557,5 +560,6 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 *.tlog
+
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,visualstudio,visualstudiocode,cmake,c,c++

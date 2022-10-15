@@ -12,5 +12,10 @@ namespace MUAWeb::Model{
         ActivityDescription,
         OthersDescription,
     };
+    enum DatabaseType{
+        Oracle,
+        Mysql,
+        SQLite,
+    };
 }
 #endif //MUAWEBBACKEND_CATEGORY_H
