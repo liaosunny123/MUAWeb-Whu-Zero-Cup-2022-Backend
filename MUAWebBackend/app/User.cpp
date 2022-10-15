@@ -2,6 +2,7 @@
 // Created by epicmo on 22-10-14.
 //
 #include "User.h"
+#include "Utility.h"
 #include "TokenDictionary.h"
 #include "UserController.h"
 #include "DataController.h"
@@ -41,6 +42,19 @@ namespace MUAWeb{
         }
         void User::setToken(Token token){
             this->token = token;
+        }
+        void User::generateToken() {
+            this->token = Utility::generateUnsignedUUID();
+        }
+        std::string User::getUsername() {
+            return this->username;
+        }
+        std::string User::getPassword(){
+            return this->password;
+        }
+        User::User() {
+            this->username = "";
+            this->password = "";
         }
         User::User(std::string username,std::string passwd){
             this->username = username;

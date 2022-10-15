@@ -9,13 +9,12 @@
 namespace MUAWeb{
     class IntilizeController{
     public:
-        MUAWeb::Model::DatabaseType databaseType;
-        std::string DBUrl;
-        std::string DBUser;
-        std::string DBPassword;
-        std::string DBPort;
-        std::string DBTable;
-        static void Intilize();
+        static char DBUrl;
+        static char DBUser;
+        static char DBPassword;
+        static int DBPort;
+        static char DBTable;
+        static bool Intilize();
     };
 }
 #endif //MAIN_CC_INTILIZECONTROLLER_H

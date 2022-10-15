@@ -11,6 +11,7 @@ namespace MUAWeb{
     public:
         static std::string generateUUID();
         static std::string generateUnsignedUUID();
+        static std::string& replace(std::string& str, const std::string& old_value, const std::string& new_value);
     };
 }
 #endif //MUAWEBBACKEND_UTILITY_H

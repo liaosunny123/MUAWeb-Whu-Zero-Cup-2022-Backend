@@ -10,11 +10,13 @@ namespace MUAWeb::Model{
     class Passage{
     public:
         int pid;
-        Category category;
+        Model::Category category;
         std::string title;
         std::string author;
         std::string datetime;
         std::string content;
+        Passage();
+        Passage(int,Model::Category,std::string,std::string,std::string,std::string);
     };
 }
 #endif //MUAWEBBACKEND_PASSAGE_H

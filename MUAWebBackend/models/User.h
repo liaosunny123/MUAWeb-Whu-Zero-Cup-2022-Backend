@@ -13,8 +13,11 @@ namespace MUAWeb{
         std::string password;
         Token token;
     public:
+        User();
         User(std::string,std::string);
         User(std::string,std::string,Token);
+        std::string getUsername();
+        std::string getPassword();
         bool isRoot();
         bool hasToken();
         bool verifyPassword();
@@ -23,6 +26,7 @@ namespace MUAWeb{
         void disposeToken();
         void changePassword(std::string);
         void setToken(Token);
+        void generateToken();
     };
 }
 #endif //MUAWEBBACKEND_USER_H

@@ -6,16 +6,11 @@
 #define MUAWEBBACKEND_CATEGORY_H
 namespace MUAWeb::Model{
     enum Category{
-        SchoolDescription,
-        ProjectDescription,
-        RebuildDescription,
-        ActivityDescription,
-        OthersDescription,
-    };
-    enum DatabaseType{
-        Oracle,
-        Mysql,
-        SQLite,
-    };
+        schooldescription,
+        projectdescription,
+        rebuilddescription,
+        activitydescription,
+        othersdescription,
+    }
 }
 #endif //MUAWEBBACKEND_CATEGORY_H
