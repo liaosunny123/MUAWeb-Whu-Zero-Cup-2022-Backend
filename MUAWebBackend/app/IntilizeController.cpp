@@ -3,31 +3,53 @@
 //
 #include <iostream>
 #include <json/json.h>
-#include <fstream>
 #include "mysql/mysql.h"
 #include <trantor/utils/Logger.h>
+#include <fstream>
 #include "IntilizeController.h"
 namespace MUAWeb{
+    std::string IntilizeController::DBUrl;
+    std::string IntilizeController::DBUser;
+    std::string IntilizeController::DBPassword;
+    int IntilizeController::DBPort;
+    std::string IntilizeController::DBTable;
     bool IntilizeController::Intilize() {
-        std::ifstream ifs;
-        ifs.open("wenben.txt",std::ios::in);
-        if(!ifs.is_open())
-        {
-            LOG_FATAL << "Cannot open database.json. Does it exist? Does MUAWeb have the right to read it?";
+        Json::Reader reader;
+        Json::Value config;
+        std::string data;
+        std::ifstream ifs("database.json", std::ios::binary);
+        if (!ifs.is_open()){
+            LOG_FATAL << "database.json cannot be opened.";
             return false;
         }
-        char buf[1024]={0};
-        while(ifs >> buf);
-        Json::Value config = (Json::Value)buf;
-        strcpy(&IntilizeController::DBUser,config["DBUser"].asCString());
-        strcpy(&IntilizeController::DBPassword,config["DBPassword"].asCString());
-        strcpy(&IntilizeController::DBTable,config["DBTable"].asCString());
-        strcpy(&IntilizeController::DBUrl,config["DBUrl"].asCString());
-        MYSQL mysql;
-        mysql_init(&mysql);
-        if(!mysql_real_connect(&mysql,&IntilizeController::DBUrl,&IntilizeController::DBUser,&IntilizeController::DBPassword,&IntilizeController::DBTable,(int)IntilizeController::DBPort,NULL,0))
+        if (reader.parse(ifs,config)){
+            LOG_WARN << "database.json Format Error";
             return false;
-        mysql_close(&mysql);
-        return true;
+        } else{
+            IntilizeController::DBUrl = config["DBUrl"].asString();
+            IntilizeController::DBPassword = config["DBPassword"].asString();
+            IntilizeController::DBUser = config["DBUser"].asString();
+            IntilizeController::DBTable = config["DBTable"].asString();
+            IntilizeController::DBPort = config["DBPort"].asInt();
+            MYSQL mysql;
+            mysql_init(&mysql);
+            if(!mysql_real_connect(&mysql,
+                                   IntilizeController::DBUrl.c_str(),
+                                   IntilizeController::DBUser.c_str(),
+                                   IntilizeController::DBPassword.c_str(),
+                                   IntilizeController::DBTable.c_str(),
+                                   IntilizeController::DBPort,
+                                   NULL,
+                                   0)){
+                LOG_FATAL << "Cannot connect to SQLServer";
+                mysql_close(&mysql);
+                return false;
+            }else{
+                mysql_close(&mysql);
+                return true;
+            }
+
+        }
+
     }
 }

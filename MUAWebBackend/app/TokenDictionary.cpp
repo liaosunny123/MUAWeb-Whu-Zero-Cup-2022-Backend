@@ -31,7 +31,7 @@ namespace MUAWeb{
         if (iter != list.end())
             return iter->second;
         else
-            return new Token();
+            return *(new Token());
     }
     void TokenDictionary::removeToken(Token token){
         auto iter = list.find(token.username);

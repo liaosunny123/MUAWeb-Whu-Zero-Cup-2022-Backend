@@ -19,7 +19,7 @@ endif ()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(${PROJECT_NAME} main.cc models/Category.h models/Passage.h models/Token.h models/Utility.h models/TokenDictionary.h models/User.h models/UserController.h models/DataController.h models/School.h app/User.cpp app/TokenDictionary.cpp app/Token.cpp app/DataController.cpp app/Utility.cpp app/UserController.cpp app/ResponController.cpp models/ResponController.h models/IntilizeController.h app/IntilizeController.cpp models/MySQLParameter.h app/MySQLParameter.cpp app/Passage.cpp)
+add_executable(${PROJECT_NAME} main.cc models/Category.h models/Passage.h models/Token.h models/Utility.h models/TokenDictionary.h models/User.h models/UserController.h models/DataController.h models/School.h app/User.cpp app/TokenDictionary.cpp app/Token.cpp app/DataController.cpp app/Utility.cpp app/UserController.cpp app/ResponController.cpp models/ResponController.h models/IntilizeController.h app/IntilizeController.cpp models/MySQLParameter.h app/MySQLParameter.cpp app/Passage.cpp app/School.cpp)
 
 # ##############################################################################
 # If you include the drogon source code locally in your project, use this method

@@ -2,6 +2,7 @@
 #include "IntilizeController.h"
 int main() {
     //监听HTTP链接地址
+    LOG_INFO << "MUAWeb is running...";
     drogon::app().addListener("0.0.0.0",30001);
     //载入CONFIG文件
     drogon::app().loadConfigFile("../config.json");

@@ -8,7 +8,7 @@
 #include "DataController.h"
 namespace MUAWeb{
         bool User::isRoot(){
-            if (this->username == "root" || this->username == "epicmo")
+            if (this->username == "root")
                 return true;
             else
                 return false;

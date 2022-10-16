@@ -9,11 +9,11 @@
 namespace MUAWeb{
     class IntilizeController{
     public:
-        static char DBUrl;
-        static char DBUser;
-        static char DBPassword;
+        static std::string DBUrl;
+        static std::string DBUser;
+        static std::string DBPassword;
         static int DBPort;
-        static char DBTable;
+        static std::string DBTable;
         static bool Intilize();
     };
 }

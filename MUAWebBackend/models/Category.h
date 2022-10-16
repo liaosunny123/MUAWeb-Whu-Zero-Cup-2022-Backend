@@ -11,6 +11,6 @@ namespace MUAWeb::Model{
         rebuilddescription,
         activitydescription,
         othersdescription,
-    }
+    };
 }
 #endif //MUAWEBBACKEND_CATEGORY_H
