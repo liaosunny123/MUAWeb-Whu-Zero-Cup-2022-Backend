@@ -7,11 +7,11 @@
 namespace MUAWeb{
     Token::Token(std::string username){
         this->username = username;
-        this->token = Utility::generateUUID();
+        this->token = Utility::generateUnsignedUUID();
         TokenDictionary::addToken(*this);
     }
     Token::Token(){
         this->username = "";
-        this->token = Utility::generateUUID();
+        this->token = Utility::generateUnsignedUUID();
     }
 }

@@ -15,6 +15,7 @@ namespace MUAWeb{
         static int DBPort;
         static std::string DBTable;
         static bool Intilize();
+        static void EndRun();
     };
 }
 #endif //MAIN_CC_INTILIZECONTROLLER_H

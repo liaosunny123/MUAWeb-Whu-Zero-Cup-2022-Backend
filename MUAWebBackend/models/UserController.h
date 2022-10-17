@@ -8,6 +8,10 @@
 namespace MUAWeb{
     class UserController{
     public:
+        static std::string getPassword(std::string);
+        static User getUser(const std::string&);
+        static bool isExist(std::string);
+        static User getUserFromDictionary(const std::string&);
         static void deleteUser(User);
         static void createUser(User);
         static void editPassword(User,std::string);

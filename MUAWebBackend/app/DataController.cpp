@@ -12,6 +12,7 @@
 
 namespace MUAWeb{
     bool DataController::connectSQL(MYSQL & mysql) {
+        mysql_init(&mysql);
         return  mysql_real_connect(&mysql,
                            IntilizeController::DBUrl.c_str(),
                            IntilizeController::DBUser.c_str(),
@@ -25,7 +26,7 @@ namespace MUAWeb{
         MYSQL mysql; //mysql连接
         if (!DataController::connectSQL(mysql))
             LOG_FATAL << "Cannot Carry command for error sql connect!";
-        auto *mySqlParameter = new MySQLParameter("SELECT passwd FROM `user` WHERE username = '@username';");
+        MySQLParameter *mySqlParameter = new MySQLParameter("SELECT passwd FROM `user` WHERE username = '@username';");
         mySqlParameter->addParameter("@username",std::move(username));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -35,9 +36,9 @@ namespace MUAWeb{
             LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
             throw ;
         }
-        auto result = mysql_store_result(&mysql);
+        MYSQL_RES* result = mysql_store_result(&mysql);
         row = mysql_fetch_row(result);
-        if (row != nullptr){
+        if (row != NULL){
             mysql_free_result(result);
             mysql_close(&mysql);
             return row[0];
@@ -63,7 +64,7 @@ namespace MUAWeb{
         }
         auto result = mysql_store_result(&mysql);
         row = mysql_fetch_row(result);
-        if (row != nullptr){
+        if (row != NULL){
             User *user = new User(row[0],row[1]);
             mysql_free_result(result);
             mysql_close(&mysql);
@@ -169,7 +170,7 @@ namespace MUAWeb{
         }
         auto result = mysql_store_result(&mysql);
         row = mysql_fetch_row(result);
-        if (row != nullptr){
+        if (row != NULL){
             auto *passage = new Model::Passage((int)(size_t)row[0],category,row[1],row[2],row[3],row[4]);
             mysql_free_result(result);
             mysql_close(&mysql);
@@ -278,7 +279,7 @@ namespace MUAWeb{
         }
         auto result = mysql_store_result(&mysql);
         row = mysql_fetch_row(result);
-        if (row != nullptr){
+        if (row != NULL){
             auto *school = new Model::School((int)(size_t)row[0],row[3],row[1],row[2],row[4],row[5]);
             mysql_free_result(result);
             mysql_close(&mysql);

@@ -7,6 +7,7 @@
 #include <trantor/utils/Logger.h>
 #include <fstream>
 #include "IntilizeController.h"
+#include "TokenDictionary.h"
 namespace MUAWeb{
     std::string IntilizeController::DBUrl;
     std::string IntilizeController::DBUser;
@@ -51,5 +52,8 @@ namespace MUAWeb{
 
         }
 
+    }
+    void IntilizeController::EndRun() {
+        TokenDictionary::removeAllToken();
     }
 }

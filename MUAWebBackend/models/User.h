@@ -14,6 +14,7 @@ namespace MUAWeb{
         Token token;
     public:
         User();
+        User(std::string);
         User(std::string,std::string);
         User(std::string,std::string,Token);
         std::string getUsername();

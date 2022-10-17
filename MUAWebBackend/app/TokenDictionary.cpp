@@ -2,6 +2,7 @@
 // Created by epicmo on 22-10-14.
 //
 #include "TokenDictionary.h"
+#include "JsonError.h"
 namespace MUAWeb{
     std::unordered_map<std::string,Token> TokenDictionary::list;
     void TokenDictionary::addToken(Token token){
@@ -9,8 +10,9 @@ namespace MUAWeb{
     }
     void TokenDictionary::removeTokenAt(std::string tokenname){
         auto iter = list.find(tokenname);
-        if (iter != list.end())
+        if (iter != list.end()){
             list.erase(iter);
+        }
     }
     bool TokenDictionary::isExist(Token token){
         auto iter = list.find(token.username);
@@ -35,7 +37,14 @@ namespace MUAWeb{
     }
     void TokenDictionary::removeToken(Token token){
         auto iter = list.find(token.username);
-        if (iter != list.end())
+        if (iter != list.end()){
             list.erase(iter);
+        }
+
+    }
+    void TokenDictionary::removeAllToken() {
+       // for (auto iter = list.begin() ;iter != list.end() ; iter++) {
+       //
+       // }
     }
 }
