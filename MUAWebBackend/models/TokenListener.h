@@ -15,20 +15,20 @@ namespace MUAWeb{
     public:
         [[noreturn]] static void startListenerProcess();
         static void endListenerProcess();
-        static int64_t getRestTime(std::string);
-        static int64_t getRestTime(Token);
-        static void freshToken(std::string);
-        static void freshToken(Token);
-        static void deleteTokenFromListener(std::string);
-        static void deleteTokenFromListener(Token);
-        static void addTokenToListener(std::string);
-        static void addTokenToListener(Token);
-        static void checkTokenStatus(std::string);
-        static void checkTokenStatus(Token);
-        static bool isExisted(std::string);
-        static bool isExisted(Token);
-        static void disposeToken(std::string);
-        static void disposeToken(Token);
+        static int64_t getRestTime(const std::string&);
+        static int64_t getRestTime(const Token&);
+        static void freshToken(const std::string&);
+        static void freshToken(const Token&);
+        static void deleteTokenFromListener(const std::string&);
+        static void deleteTokenFromListener(const Token&);
+        static void addTokenToListener(const std::string&);
+        static void addTokenToListener(const Token&);
+        static void checkTokenStatus(const std::string&);
+        static void checkTokenStatus(const Token&);
+        static bool isExisted(const std::string&);
+        static bool isExisted(const Token&);
+        static void disposeToken(const std::string&);
+        static void disposeToken(const Token&);
     };
 }
 #endif //MAIN_CC_TOKENLISTENER_H

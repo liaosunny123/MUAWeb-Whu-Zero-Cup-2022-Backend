@@ -3,7 +3,7 @@
 //
 #include "JsonError.h"
 namespace MUAWeb{
-    std::shared_ptr<drogon::HttpResponse> JsonError::ErrorResponse(int code, std::string cause) {
+    std::shared_ptr<drogon::HttpResponse> JsonError::ErrorResponse(int code, const std::string& cause) {
         Json::Value error;
         error["code"] = code;
         error["cause"] = cause;

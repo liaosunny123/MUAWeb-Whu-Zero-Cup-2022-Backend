@@ -2,6 +2,8 @@
 // Created by epicmo on 22-10-14.
 //
 #include "User.h"
+
+#include <utility>
 #include "Utility.h"
 #include "TokenDictionary.h"
 #include "UserController.h"
@@ -14,7 +16,7 @@ namespace MUAWeb{
                 return false;
         }
         bool User::hasToken(){
-            if(this->token.token != "" && TokenDictionary::hasToken(this->username))
+            if(!this->token.token.empty() && TokenDictionary::hasToken(this->username))
                 return true;
             else
                 return false;
@@ -38,10 +40,10 @@ namespace MUAWeb{
             TokenDictionary::removeTokenAt(this->username);
         }
         void User::changePassword(std::string passwd){
-            UserController::editPassword(*this,passwd);
+            UserController::editPassword(*this,std::move(passwd));
         }
         void User::setToken(Token token){
-            this->token = token;
+            this->token = std::move(token);
         }
         void User::generateToken() {
             this->token = Utility::generateUnsignedUUID();
@@ -57,16 +59,16 @@ namespace MUAWeb{
             this->password = "";
         }
         User::User(std::string username) {
-        this->username = username;
+        this->username = std::move(username);
         }
         User::User(std::string username,std::string passwd){
-            this->username = username;
-            this->password = passwd;
+            this->username = std::move(username);
+            this->password = std::move(passwd);
         }
         User::User(std::string username,std::string passwd,Token token){
-            this->username = username;
-            this->password = passwd;
-            this->token = token;
+            this->username = std::move(username);
+            this->password = std::move(passwd);
+            this->token = std::move(token);
         }
 
 }

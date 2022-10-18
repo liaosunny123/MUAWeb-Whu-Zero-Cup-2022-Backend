@@ -5,44 +5,44 @@
 #include "JsonError.h"
 namespace MUAWeb{
     std::unordered_map<std::string,Token> TokenDictionary::list;
-    void TokenDictionary::addToken(Token token){
+    void TokenDictionary::addToken(const Token& token){
         list.insert(std::pair<std::string,Token>(token.username,token));
     }
-    void TokenDictionary::removeTokenAt(std::string tokenname){
+    void TokenDictionary::removeTokenAt(const std::string& tokenname){
         auto iter = list.find(tokenname);
         if (iter != list.end()){
             list.erase(iter);
         }
     }
-    bool TokenDictionary::isExist(Token token){
+    bool TokenDictionary::isExist(const Token& token){
         auto iter = list.find(token.username);
         if (iter != list.end())
             return true;
         else
             return false;
     }
-    bool TokenDictionary::isExist(std::string username){
+    bool TokenDictionary::isExist(const std::string& username){
         auto iter = list.find(username);
         if (iter != list.end())
             return true;
         else
             return false;
     }
-    bool TokenDictionary::hasToken(std::string username){
+    bool TokenDictionary::hasToken(const std::string& username){
         auto iter = list.find(username);
         if (iter != list.end())
             return true;
         else
             return false;
     }
-    Token TokenDictionary::getToken(std::string username){
+    Token TokenDictionary::getToken(const std::string& username){
         auto iter = list.find(username);
         if (iter != list.end())
             return iter->second;
         else
             return *(new Token());
     }
-    void TokenDictionary::removeToken(Token token){
+    void TokenDictionary::removeToken(const Token& token){
         auto iter = list.find(token.username);
         if (iter != list.end()){
             list.erase(iter);

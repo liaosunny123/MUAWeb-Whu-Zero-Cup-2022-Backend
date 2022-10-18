@@ -10,7 +10,7 @@ namespace MUAWeb{
     public:
         std::string username;
         std::string token;
-        Token(std::string);
+        Token(const std::string&);
         Token();//匿名Token
         //为True表示Token会被记录在Token池中
     };

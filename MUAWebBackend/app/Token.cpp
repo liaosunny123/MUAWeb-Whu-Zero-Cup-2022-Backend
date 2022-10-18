@@ -6,7 +6,7 @@
 #include "TokenDictionary.h"
 #include <trantor/utils/Logger.h>
 namespace MUAWeb{
-    Token::Token(std::string username){
+    Token::Token(const std::string& username){
         this->username = username;
         this->token = Utility::generateUnsignedUUID();
         if (TokenDictionary::isExist(username)){

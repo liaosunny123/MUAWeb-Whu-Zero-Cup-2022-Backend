@@ -10,7 +10,7 @@
 namespace MUAWeb{
     class JsonError{
     public:
-        static std::shared_ptr<drogon::HttpResponse> ErrorResponse(int,std::string);
+        static std::shared_ptr<drogon::HttpResponse> ErrorResponse(int,const std::string&);
     };
 }
 #endif //MAIN_CC_JSONERROR_H

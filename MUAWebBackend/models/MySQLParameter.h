@@ -12,9 +12,9 @@ namespace MUAWeb{
         std::string sql;
         std::unordered_map<std::string,std::string> parametes;
     public:
-        MySQLParameter(std::string);
-        void addParameter(std::string,std::string);
-        void removeParameter(std::string);
+        explicit MySQLParameter(std::string);
+        void addParameter(const std::string&,std::string);
+        void removeParameter(const std::string&);
         std::string getSQL();
     };
 }

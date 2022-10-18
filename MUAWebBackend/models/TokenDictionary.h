@@ -12,14 +12,14 @@ namespace MUAWeb{
     private:
         static std::unordered_map<std::string,Token> list;
     public:
-        static void addToken(Token);
-        static void removeToken(Token);
-        static void removeTokenAt(std::string);
-        static bool isExist(Token);//Token是否存在
-        static bool hasToken(std::string);//判断用户是否有非匿名化的Token
-        static Token getToken(std::string);
+        static void addToken(const Token&);
+        static void removeToken(const Token&);
+        static void removeTokenAt(const std::string&);
+        static bool isExist(const Token&);//Token是否存在
+        static bool hasToken(const std::string&);//判断用户是否有非匿名化的Token
+        static Token getToken(const std::string&);
         static void removeAllToken();
-        static bool isExist(std::string);
+        static bool isExist(const std::string&);
     };
 }
 #endif //MUAWEBBACKEND_TOKENDICTIONARY_H
