@@ -19,7 +19,7 @@ public:
         METHOD_ADD(Auth::EditUserPassword, "/editUserPassword", Post);
         METHOD_ADD(Auth::RemoveUser, "/removeUser", Post);
         METHOD_ADD(Auth::DisposeToken, "/disposeToken", Post);
-        METHOD_ADD(Auth::DisposeToken, "/refreshToken", Post);
+        METHOD_ADD(Auth::RefreshToken, "/refreshToken", Post);
     METHOD_LIST_END
     void Login(JsonModels::Auth::Login &&pLogin , std::function<void (const HttpResponsePtr &)> &&callback) const;
     void Register(JsonModels::Auth::Register &&pRegister , std::function<void (const HttpResponsePtr &)> &&callback) const;
