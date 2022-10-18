@@ -57,7 +57,7 @@ namespace MUAWeb{
             this->password = "";
         }
         User::User(std::string username) {
-        this->username = "";
+        this->username = username;
         }
         User::User(std::string username,std::string passwd){
             this->username = username;

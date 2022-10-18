@@ -6,6 +6,7 @@
 #include "UserController.h"
 #include "TokenDictionary.h"
 #include "JsonError.h"
+#include "TokenListener.h"
 void Auth::Login(JsonModels::Auth::Login &&pLogin,
                  std::function<void (const HttpResponsePtr &)> &&callback) const{
     if (UserController::getPassword(pLogin.username) != pLogin.password){
@@ -90,19 +91,19 @@ void Auth::EditUserPassword(JsonModels::Auth::EditUserPassword &&pEditUserPasswo
     }
 
     if (!UserController::getUserFromDictionary(pEditUserPassword.username).isRoot()){
-        LOG_WARN << "User try to register without Root Permission. Username:" << pEditUserPassword.username;
+        LOG_WARN << "User try to editUserPassword without Root Permission. Username:" << pEditUserPassword.username;
         callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
         return;
     }
 
     if (TokenDictionary::getToken(pEditUserPassword.username).token != pEditUserPassword.token){
-        LOG_WARN << "User try to register without RightToken" << pEditUserPassword.username;
+        LOG_WARN << "User try to editUserPassword without RightToken" << pEditUserPassword.username;
         callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
         return;
     }
 
     if (!UserController::isExist(pEditUserPassword.targetuser)){
-        LOG_INFO << "User create unexisted user:" << pEditUserPassword.targetuser;
+        LOG_INFO << "User edit unexisted user:" << pEditUserPassword.targetuser;
         callback(MUAWeb::JsonError::ErrorResponse(404,"不能修改不存在的用户的密码。"));
         return;
     }
@@ -119,25 +120,25 @@ void Auth::EditUserPassword(JsonModels::Auth::EditUserPassword &&pEditUserPasswo
 void Auth::RemoveUser(JsonModels::Auth::RemoveUser &&pRemoveUser,
                             std::function<void (const HttpResponsePtr &)> &&callback) const{
     if (!TokenDictionary::hasToken(pRemoveUser.username)){
-        LOG_WARN << "User try to editUserPassword without Token. Username:" << pRemoveUser.username;
+        LOG_WARN << "User try to remove user  without Token. Username:" << pRemoveUser.username;
         callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
         return;
     }
 
     if (!UserController::getUserFromDictionary(pRemoveUser.username).isRoot()){
-        LOG_WARN << "User try to register without Root Permission. Username:" << pRemoveUser.username;
+        LOG_WARN << "User try to remove user without Root Permission. Username:" << pRemoveUser.username;
         callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
         return;
     }
 
     if (TokenDictionary::getToken(pRemoveUser.username).token != pRemoveUser.token){
-        LOG_WARN << "User try to register without RightToken" << pRemoveUser.username;
+        LOG_WARN << "User try to remove user without RightToken" << pRemoveUser.username;
         callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
         return;
     }
 
     if (!UserController::isExist(pRemoveUser.targetusername)){
-        LOG_INFO << "User create unexisted user:" << pRemoveUser.targetusername;
+        LOG_INFO << "User remove unexisted user:" << pRemoveUser.targetusername;
         callback(MUAWeb::JsonError::ErrorResponse(404,"不能删除不存在的用户。"));
         return;
     }
@@ -154,12 +155,28 @@ void Auth::RemoveUser(JsonModels::Auth::RemoveUser &&pRemoveUser,
 void Auth::DisposeToken(JsonModels::Auth::DisposeToken &&pDisposeToken,
                  std::function<void (const HttpResponsePtr &)> &&callback) const{
     if (TokenDictionary::getToken(pDisposeToken.username).token != pDisposeToken.token){
-        LOG_WARN << "User try to register without RightToken" << pDisposeToken.username;
+        LOG_WARN << "User try to disposeToken without RightToken" << pDisposeToken.username;
         callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
         return;
     }
 
     TokenDictionary::removeTokenAt(pDisposeToken.username);
+    Json::Value json;
+    json["status"] = true;
+    auto resp=HttpResponse::newHttpJsonResponse(json);
+    callback(resp);
+}
+
+
+void Auth::RefreshToken(JsonModels::Auth::RefreshToken &&pRefreshToken,
+                        std::function<void (const HttpResponsePtr &)> &&callback) const{
+
+    if (TokenDictionary::getToken(pRefreshToken.username).token != pRefreshToken.token){
+        LOG_WARN << "User try to register without RightToken" << pRefreshToken.username;
+        callback(MUAWeb::JsonError::ErrorResponse(403,"密钥失效！"));
+        return;
+    }
+    TokenListener::freshToken(pRefreshToken.username);
     Json::Value json;
     json["status"] = true;
     auto resp=HttpResponse::newHttpJsonResponse(json);

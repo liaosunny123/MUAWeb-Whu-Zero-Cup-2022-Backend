@@ -37,6 +37,10 @@ namespace MUAWeb::JsonModels::Auth{
         std::string username;
         std::string token;
     };
+    struct RefreshToken{
+        std::string username;
+        std::string token;
+    };
 }
 namespace drogon{
     template <>
@@ -99,6 +103,16 @@ namespace drogon{
     inline MUAWeb::JsonModels::Auth::DisposeToken fromRequest(const HttpRequest &req){
         auto json = req.getJsonObject();
         MUAWeb::JsonModels::Auth::DisposeToken user;
+        if (json){
+            user.username = (*json)["username"].asString();
+            user.token = (*json)["token"].asString();
+        }
+        return user;
+    }
+    template <>
+    inline MUAWeb::JsonModels::Auth::RefreshToken fromRequest(const HttpRequest &req){
+        auto json = req.getJsonObject();
+        MUAWeb::JsonModels::Auth::RefreshToken user;
         if (json){
             user.username = (*json)["username"].asString();
             user.token = (*json)["token"].asString();

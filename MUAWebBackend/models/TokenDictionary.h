@@ -19,6 +19,7 @@ namespace MUAWeb{
         static bool hasToken(std::string);//判断用户是否有非匿名化的Token
         static Token getToken(std::string);
         static void removeAllToken();
+        static bool isExist(std::string);
     };
 }
 #endif //MUAWEBBACKEND_TOKENDICTIONARY_H

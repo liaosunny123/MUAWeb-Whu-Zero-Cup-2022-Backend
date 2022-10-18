@@ -21,6 +21,13 @@ namespace MUAWeb{
         else
             return false;
     }
+    bool TokenDictionary::isExist(std::string username){
+        auto iter = list.find(username);
+        if (iter != list.end())
+            return true;
+        else
+            return false;
+    }
     bool TokenDictionary::hasToken(std::string username){
         auto iter = list.find(username);
         if (iter != list.end())
