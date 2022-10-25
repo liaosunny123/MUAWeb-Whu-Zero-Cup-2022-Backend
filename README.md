@@ -32,6 +32,7 @@ The format of json is:
     "DBType": "MYSQL",
 }
 ```
+Besides that, you should import SQL from dir "SQL".  
 Please note that this project can only support MYSQL (Version above 8.0) in current version.  
 If MUAweb cannot connect SQLServer according to your config, the program will be stoped.  
 # Welcome PR  
