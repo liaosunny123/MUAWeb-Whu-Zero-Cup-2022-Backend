@@ -25,13 +25,13 @@ namespace MUAWeb{
         static void removePassage(const Model::Passage&);
         static Model::Passage getPassage(Model::Category,int);
         static int getPassageNumber(Model::Category);
-        static Model::Passage* getFullPassageList(Model::Category,int &);
+        static Model::Passage* getFullPassageList(Model::Category category, int &);
         //School:
         static void addSchool(const Model::School&);
         static void removeSchool(const Model::School&);
         static Model::School getSchool(int);
         static int getSchoolNumber();
-        static Model::School* getFullSchoolList(const Model::School&,int &);
+        static Model::School* getFullSchoolList(int &);
     };
 }
 #endif //MAIN_CC_DATACONTROLLER_H

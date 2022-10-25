@@ -328,7 +328,7 @@ namespace MUAWeb {
         return number;
     }
 
-    Model::School *DataController::getFullSchoolList(const Model::School &school, int &length) {
+    Model::School *DataController::getFullSchoolList(int &length) {
         MYSQL mysql; //mysql连接
         if (!DataController::connectSQL(mysql))
             LOG_FATAL << "Cannot Carry command for error sql connect!";

@@ -16,6 +16,7 @@ namespace MUAWeb::Model{
         std::string datetime;
         std::string content;
         Passage();
+        Passage(Model::Category,std::string,std::string,const std::string&,std::string);
         Passage(int,Model::Category,std::string,std::string,const std::string&,std::string);
     };
 }

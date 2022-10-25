@@ -45,7 +45,7 @@ namespace MUAWeb::JsonModels::Auth{
 namespace drogon{
     template <>
     inline MUAWeb::JsonModels::Auth::Login fromRequest(const HttpRequest &req){
-        auto json = req.getJsonObject();
+        const auto& json = req.getJsonObject();
         MUAWeb::JsonModels::Auth::Login user;
         if (json){
             user.username = (*json)["username"].asString();
@@ -55,7 +55,7 @@ namespace drogon{
     }
     template <>
     inline MUAWeb::JsonModels::Auth::Register fromRequest(const HttpRequest &req){
-        auto json = req.getJsonObject();
+        const auto& json = req.getJsonObject();
         MUAWeb::JsonModels::Auth::Register user;
         if (json){
             user.username = (*json)["username"].asString();
@@ -67,7 +67,7 @@ namespace drogon{
     }
     template <>
     inline MUAWeb::JsonModels::Auth::EditPassword fromRequest(const HttpRequest &req){
-        auto json = req.getJsonObject();
+        const auto& json = req.getJsonObject();
         MUAWeb::JsonModels::Auth::EditPassword user;
         if (json){
             user.username = (*json)["username"].asString();
@@ -78,7 +78,7 @@ namespace drogon{
     }
     template <>
     inline MUAWeb::JsonModels::Auth::EditUserPassword fromRequest(const HttpRequest &req){
-        auto json = req.getJsonObject();
+        const auto& json = req.getJsonObject();
         MUAWeb::JsonModels::Auth::EditUserPassword user;
         if (json){
             user.username = (*json)["username"].asString();
@@ -90,7 +90,7 @@ namespace drogon{
     }
     template <>
     inline MUAWeb::JsonModels::Auth::RemoveUser fromRequest(const HttpRequest &req){
-        auto json = req.getJsonObject();
+        const auto& json = req.getJsonObject();
         MUAWeb::JsonModels::Auth::RemoveUser user;
         if (json){
             user.username = (*json)["username"].asString();
@@ -101,7 +101,7 @@ namespace drogon{
     }
     template <>
     inline MUAWeb::JsonModels::Auth::DisposeToken fromRequest(const HttpRequest &req){
-        auto json = req.getJsonObject();
+        const auto& json = req.getJsonObject();
         MUAWeb::JsonModels::Auth::DisposeToken user;
         if (json){
             user.username = (*json)["username"].asString();
@@ -111,7 +111,7 @@ namespace drogon{
     }
     template <>
     inline MUAWeb::JsonModels::Auth::RefreshToken fromRequest(const HttpRequest &req){
-        auto json = req.getJsonObject();
+        const auto& json = req.getJsonObject();
         MUAWeb::JsonModels::Auth::RefreshToken user;
         if (json){
             user.username = (*json)["username"].asString();

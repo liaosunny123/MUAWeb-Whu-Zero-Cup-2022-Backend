@@ -1,20 +1,18 @@
 #pragma once
-
+#include "jsonmodels/SchoolModels.h"
 #include <drogon/HttpController.h>
 
 using namespace drogon;
-
+using namespace MUAWeb;
 class School : public drogon::HttpController<School>
 {
   public:
     METHOD_LIST_BEGIN
-    // use METHOD_ADD to add your custom processing function here;
-    // METHOD_ADD(School::get, "/{2}/{1}", Get); // path is /School/{arg2}/{arg1}
-    // METHOD_ADD(School::your_method_name, "/{1}/{2}/list", Get); // path is /School/{arg1}/{arg2}/list
-    // ADD_METHOD_TO(School::your_method_name, "/absolute/path/{1}/{2}/list", Get); // path is /absolute/path/{arg1}/{arg2}/list
-
+        METHOD_ADD(School::GetSchoolList, "/getSchoolList", Get);
+        METHOD_ADD(School::GetSchoolContent, "/getSchoolContent/{pid}", Get);
+        METHOD_ADD(School::CreateSchool, "/createSchool", Post);
     METHOD_LIST_END
-    // your declaration of processing function maybe like this:
-    // void get(const HttpRequestPtr& req, std::function<void (const HttpResponsePtr &)> &&callback, int p1, std::string p2);
-    // void your_method_name(const HttpRequestPtr& req, std::function<void (const HttpResponsePtr &)> &&callback, double p1, int p2) const;
+    void GetSchoolList(JsonModels::School::GetSchoolList &&pGetSchoolList , std::function<void (const HttpResponsePtr &)> &&callback) const;
+    void GetSchoolContent(JsonModels::School::GetSchoolContent &&pGetSchoolContent , std::function<void (const HttpResponsePtr &)> &&callback,std::string pid) const;
+    void CreateSchool(JsonModels::School::CreateSchool &&pCreateSchool , std::function<void (const HttpResponsePtr &)> &&callback) const;
 };

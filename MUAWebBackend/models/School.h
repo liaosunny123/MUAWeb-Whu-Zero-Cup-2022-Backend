@@ -17,6 +17,7 @@ namespace MUAWeb::Model{
         std::string content;
         std::string url;
         School();
+        School(std::string,std::string,std::string,std::string,std::string);
         School(int,std::string,std::string,std::string,std::string,std::string);
     };
 }
