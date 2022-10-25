@@ -19,7 +19,7 @@ endif ()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(${PROJECT_NAME} main.cc models/Category.h models/Passage.h models/Token.h models/Utility.h models/TokenDictionary.h models/User.h models/UserController.h models/DataController.h models/School.h app/User.cpp app/TokenDictionary.cpp app/Token.cpp app/DataController.cpp app/Utility.cpp app/UserController.cpp models/IntilizeController.h app/IntilizeController.cpp models/MySQLParameter.h app/MySQLParameter.cpp app/Passage.cpp app/School.cpp controllers/Auth.h controllers/Auth.cpp controllers/Banner.h controllers/Banner.cc controllers/Passage.cc controllers/Passage.h controllers/School.cc controllers/School.h controllers/Timeline.cc controllers/Timeline.h jsonmodels/AuthModels.h models/JsonError.h app/JsonError.cpp models/TokenListener.h app/TokenListener.cpp)
+add_executable(${PROJECT_NAME} main.cc models/Category.h models/Passage.h models/Token.h models/Utility.h models/TokenDictionary.h models/User.h models/UserController.h models/DataController.h models/School.h app/User.cpp app/TokenDictionary.cpp app/Token.cpp app/DataController.cpp app/Utility.cpp app/UserController.cpp models/IntilizeController.h app/IntilizeController.cpp models/MySQLParameter.h app/MySQLParameter.cpp app/Passage.cpp app/School.cpp controllers/Auth.h controllers/Auth.cpp controllers/Banner.h controllers/Banner.cc controllers/Passage.cc controllers/Passage.h controllers/School.cc controllers/School.h controllers/Timeline.cc controllers/Timeline.h jsonmodels/AuthModels.h models/JsonError.h app/JsonError.cpp models/TokenListener.h app/TokenListener.cpp jsonmodels/SchoolModels.h)
 
 # ##############################################################################
 # If you include the drogon source code locally in your project, use this method
@@ -30,6 +30,8 @@ add_executable(${PROJECT_NAME} main.cc models/Category.h models/Passage.h models
 # and comment out the following lines
 find_package(Drogon CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE Drogon::Drogon)
+
+
 
 # ##############################################################################
 
@@ -76,3 +78,4 @@ target_sources(${PROJECT_NAME}
 # ##############################################################################
 
 add_subdirectory(test)
+
