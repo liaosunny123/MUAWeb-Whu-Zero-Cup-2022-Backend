@@ -9,7 +9,7 @@
 namespace MUAWeb::Model{
     class Passage{
     public:
-        int pid;
+        int pid{};
         Model::Category category;
         std::string title;
         std::string author;

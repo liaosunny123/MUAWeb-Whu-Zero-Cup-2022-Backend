@@ -2,11 +2,12 @@
 // Created by epicmo on 22-10-15.
 //
 #include <iostream>
+#include <utility>
 #include "Utility.h"
 #include "MySQLParameter.h"
 namespace MUAWeb{
     MySQLParameter::MySQLParameter(std::string sql){
-        this->sql = sql;
+        this->sql = std::move(sql);
     }
     void MySQLParameter::addParameter(const std::string& paraname,std::string content){
         std::string temp;

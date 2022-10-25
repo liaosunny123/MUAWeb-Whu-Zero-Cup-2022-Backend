@@ -9,7 +9,7 @@
 namespace MUAWeb::Model{
     class School{
     public:
-        int pid;
+        int pid{};
         Category category = MUAWeb::Model::Category::schooldescription;
         std::string title;
         std::string author;

@@ -40,7 +40,7 @@ namespace MUAWeb{
                                    IntilizeController::DBPassword.c_str(),
                                    IntilizeController::DBTable.c_str(),
                                    IntilizeController::DBPort,
-                                   NULL,
+                                   nullptr,
                                    0)){
                 LOG_FATAL << "Cannot connect to SQLServer";
                 mysql_close(&mysql);
