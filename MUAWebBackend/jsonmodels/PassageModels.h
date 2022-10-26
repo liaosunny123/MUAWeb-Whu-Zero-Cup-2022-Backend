@@ -19,6 +19,12 @@ namespace MUAWeb::JsonModels::Passage{
         std::string content;
         std::string category;
     };
+    struct RemovePassage{
+        std::string username;
+        std::string token;
+        std::string category;
+        int pid;
+    };
 }
 namespace drogon{
     template <>
@@ -41,6 +47,18 @@ namespace drogon{
             passage.title = (*json)["title"].asString();
             passage.content = (*json)["content"].asString();
             passage.createtime = (*json)["createtime"].asString();
+            passage.category = (*json)["category"].asString();
+        }
+        return passage;
+    }
+    template <>
+    inline MUAWeb::JsonModels::Passage::RemovePassage fromRequest(const HttpRequest &req){
+        const auto& json = req.getJsonObject();
+        MUAWeb::JsonModels::Passage::RemovePassage passage;
+        if (json){
+            passage.username = (*json)["username"].asString();
+            passage.token = (*json)["token"].asString();
+            passage.pid = (*json)["pid"].asInt();
             passage.category = (*json)["category"].asString();
         }
         return passage;

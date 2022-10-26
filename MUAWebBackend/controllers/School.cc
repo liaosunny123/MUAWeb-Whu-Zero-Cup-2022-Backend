@@ -52,3 +52,23 @@ void School::CreateSchool(JsonModels::School::CreateSchool &&pCreateSchool , std
     resp->setStatusCode(drogon::k200OK);
     callback(resp);
 }
+void School::RemoveSchool(JsonModels::School::RemoveSchool &&pRemoveSchool , std::function<void (const HttpResponsePtr &)> &&callback) const{
+    if (!TokenDictionary::hasToken(pRemoveSchool.username)){
+        LOG_WARN << "User try to deleteSchool without Token. Username:" << pRemoveSchool.username;
+        callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
+        return;
+    }
+
+    if (TokenDictionary::getToken(pRemoveSchool.username).token != pRemoveSchool.token){
+        LOG_WARN << "User try to deleteSchool without RightToken" << pRemoveSchool.username;
+        callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
+        return;
+    }
+    Json::Value json;
+    Model::School school(pRemoveSchool.pid);
+    DataController::removeSchool(school);
+    json["status"] = true;
+    auto resp=HttpResponse::newHttpJsonResponse(json);
+    resp->setStatusCode(drogon::k200OK);
+    callback(resp);
+}

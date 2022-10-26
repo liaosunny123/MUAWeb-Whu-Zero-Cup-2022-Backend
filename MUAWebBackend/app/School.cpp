@@ -14,6 +14,7 @@ namespace MUAWeb::Model{
         this->content = std::move(content);
     }
     School::School() = default;
+    School::School(int pid) { this->pid=pid;}
     School::School(std::string url,std::string title,std::string content,std::string editor,std::string datetime) {
         this->url = std::move(url);
         this->datetime = std::move(datetime);

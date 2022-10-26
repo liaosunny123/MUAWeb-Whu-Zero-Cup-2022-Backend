@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="995b5cc8-2415-45d7-8fd7-0c4040d3971b" name="MUAtest" url="http://101.42.238.12">
+        <fileTransfer rootFolder="/home/ubuntu" accessType="SFTP" host="101.42.238.12" port="22" sshConfigId="b0db2c35-b2af-46b4-8cf8-f30e26aa6e4e" sshConfig="ubuntu@101.42.238.12:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

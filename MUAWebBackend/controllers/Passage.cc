@@ -50,3 +50,23 @@ void Passage::CreatePassage(JsonModels::Passage::CreatePassage &&pCreatePassage 
     resp->setStatusCode(drogon::k200OK);
     callback(resp);
 }
+void Passage::RemovePassage(JsonModels::Passage::RemovePassage &&pRemovePassage , std::function<void (const HttpResponsePtr &)> &&callback) const{
+    if (!TokenDictionary::hasToken(pRemovePassage.username)){
+        LOG_WARN << "User try to createPassage without Token. Username:" << pRemovePassage.username;
+        callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
+        return;
+    }
+
+    if (TokenDictionary::getToken(pRemovePassage.username).token != pRemovePassage.token){
+        LOG_WARN << "User try to createPassage without RightToken" << pRemovePassage.username;
+        callback(MUAWeb::JsonError::ErrorResponse(403,"用户权限效验失败"));
+        return;
+    }
+    Json::Value json;
+    Model::Passage Passage(pRemovePassage.pid,(Model::Category)std::stoi(pRemovePassage.category));
+    DataController::removePassage(Passage);
+    json["status"] = true;
+    auto resp=HttpResponse::newHttpJsonResponse(json);
+    resp->setStatusCode(drogon::k200OK);
+    callback(resp);
+}

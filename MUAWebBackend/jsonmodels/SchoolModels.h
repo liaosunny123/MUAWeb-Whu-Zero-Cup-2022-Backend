@@ -19,6 +19,11 @@ namespace MUAWeb::JsonModels::School{
         std::string content;
         std::string img;
     };
+    struct RemoveSchool{
+        std::string username;
+        std::string token;
+        int pid;
+    };
 }
 namespace drogon{
     template <>
@@ -42,6 +47,17 @@ namespace drogon{
             passage.content = (*json)["content"].asString();
             passage.createtime = (*json)["createtime"].asString();
             passage.img = (*json)["img"].asString();
+        }
+        return passage;
+    }
+    template <>
+    inline MUAWeb::JsonModels::School::RemoveSchool fromRequest(const HttpRequest &req){
+        const auto& json = req.getJsonObject();
+        MUAWeb::JsonModels::School::RemoveSchool passage;
+        if (json){
+            passage.username = (*json)["username"].asString();
+            passage.token = (*json)["token"].asString();
+            passage.pid = (*json)["pid"].asInt();
         }
         return passage;
     }
