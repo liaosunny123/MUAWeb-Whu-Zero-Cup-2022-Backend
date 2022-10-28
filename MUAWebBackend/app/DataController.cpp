@@ -137,7 +137,7 @@ namespace MUAWeb {
         mySqlParameter->addParameter("@content", passage.content);
         mySqlParameter->addParameter("@editor", passage.author);
         mySqlParameter->addParameter("@time", passage.datetime);
-        mySqlParameter->addParameter("@category", (std::string) (const char *) passage.category);
+        mySqlParameter->addParameter("@category", Model::CategoryToString(passage.category));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         if (mysql_query(&mysql, sql.c_str())) {
@@ -153,7 +153,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
         auto *mySqlParameter = new MySQLParameter("DELETE FROM `@category` where pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(passage.pid));
-        mySqlParameter->addParameter("@category", (std::string) (const char *) passage.category);
+        mySqlParameter->addParameter("@category", Model::CategoryToString(passage.category));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         if (mysql_query(&mysql, sql.c_str())) {
@@ -169,7 +169,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
         auto *mySqlParameter = new MySQLParameter("SELECT passwd FROM `@category` WHERE pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(index));
-        mySqlParameter->addParameter("@category", (std::string) (const char *) category);
+        mySqlParameter->addParameter("@category", Model::CategoryToString(category));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         MYSQL_ROW row = nullptr;
@@ -198,7 +198,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid FROM @category;");
-        mySqlParameter->addParameter("@category", (std::string) (const char *) category);
+        mySqlParameter->addParameter("@category",Model::CategoryToString(category));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         if (mysql_query(&mysql, sql.c_str())) {
@@ -220,7 +220,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time FROM @category;");
-        mySqlParameter->addParameter("@category", (std::string) (const char *) category);
+        mySqlParameter->addParameter("@category", Model::CategoryToString(category));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         MYSQL_ROW row = nullptr;

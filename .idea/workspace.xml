@@ -23,19 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a18a9ef4-d18c-4a3a-878e-5e39e26e2873" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/MUAWebBackend/app/Category.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MUAWebBackend/jsonmodels/SearchModels.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MUAWebBackend/models/Banner.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MUAWebBackend/models/Timeline.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/Passage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/Passage.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/School.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/School.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Passage.cc" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Passage.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Passage.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Passage.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/School.cc" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/School.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/School.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/School.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/jsonmodels/PassageModels.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/jsonmodels/PassageModels.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/jsonmodels/SchoolModels.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/jsonmodels/SchoolModels.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/Passage.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/Passage.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/School.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/School.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/Category.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/Category.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/DataController.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/DataController.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mua-web-frontend" beforeDir="false" afterPath="$PROJECT_DIR$/mua-web-frontend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mua-web-frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mua-web-frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +44,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -82,6 +81,11 @@
   }
 }</component>
   <component name="RunManager" selected="CMake 应用程序.MUAWebBackend">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MUAWebBackend" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MUAWebBackend" TARGET_NAME="MUAWebBackend" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MUAWebBackend" RUN_TARGET_NAME="MUAWebBackend">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -136,7 +140,10 @@
       <workItem from="1666696982714" duration="8168000" />
       <workItem from="1666705514891" duration="751000" />
       <workItem from="1666706280821" duration="326000" />
-      <workItem from="1666751376094" duration="1463000" />
+      <workItem from="1666751376094" duration="3583000" />
+      <workItem from="1666948322902" duration="6000" />
+      <workItem from="1666961282620" duration="1525000" />
+      <workItem from="1666966035024" duration="1802000" />
     </task>
     <servers />
   </component>
@@ -156,6 +163,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/MUAWebBackend/controllers/Passage.cc</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

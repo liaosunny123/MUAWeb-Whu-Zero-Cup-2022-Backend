@@ -12,5 +12,6 @@ namespace MUAWeb::Model{
         activitydescription = 4,
         othersdescription = 5,
     };
+    std::string CategoryToString(Category);
 }
 #endif //MUAWEBBACKEND_CATEGORY_H

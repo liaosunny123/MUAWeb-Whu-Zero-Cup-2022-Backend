@@ -32,6 +32,12 @@ namespace MUAWeb{
         static Model::School getSchool(int);
         static int getSchoolNumber();
         static Model::School* getFullSchoolList(int &);
+        //Search:
+        static Model::Passage* search(std::string,int &);
+        //Banner:
+        static void createBanner();
+        //Timeline:
+
     };
 }
 #endif //MAIN_CC_DATACONTROLLER_H
