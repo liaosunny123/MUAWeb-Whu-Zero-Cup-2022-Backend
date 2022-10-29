@@ -12,6 +12,7 @@ namespace MUAWeb{
     void MySQLParameter::addParameter(const std::string& paraname,std::string content){
         std::string temp;
         temp = Utility::replace(content,"'","''");
+        temp = Utility::replace(content,"%","\\%");
         this->parametes.insert(std::pair<std::string,std::string>(paraname,temp));
     }
     void MySQLParameter::removeParameter(const std::string& parname){

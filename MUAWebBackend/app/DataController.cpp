@@ -3,7 +3,7 @@
 //
 #include <mysql/mysql.h>
 #include <trantor/utils/Logger.h>
-
+#include "Utility.h"
 #include <utility>
 #include "DataController.h"
 #include "MySQLParameter.h"
@@ -46,7 +46,7 @@ namespace MUAWeb {
         } else {
             mysql_free_result(result);
             mysql_close(&mysql);
-            return "";
+            return Utility::generateUnsignedUUID();
         }
     }
 
@@ -354,5 +354,8 @@ namespace MUAWeb {
             schools[i].url = row[4];
         }
         return schools;
+    }
+    Model::Passage* DataController::search(std::string,int &){
+        
     }
 }

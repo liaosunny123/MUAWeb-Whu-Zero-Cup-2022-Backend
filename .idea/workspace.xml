@@ -23,17 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a18a9ef4-d18c-4a3a-878e-5e39e26e2873" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/app/Category.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/jsonmodels/SearchModels.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/models/Banner.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/models/Timeline.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/Category.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/Category.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/DataController.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/DataController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/MySQLParameter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/MySQLParameter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mua-web-frontend" beforeDir="false" afterPath="$PROJECT_DIR$/mua-web-frontend" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,11 +74,6 @@
   }
 }</component>
   <component name="RunManager" selected="CMake 应用程序.MUAWebBackend">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MUAWebBackend" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MUAWebBackend" TARGET_NAME="MUAWebBackend" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MUAWebBackend" RUN_TARGET_NAME="MUAWebBackend">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -144,6 +132,10 @@
       <workItem from="1666948322902" duration="6000" />
       <workItem from="1666961282620" duration="1525000" />
       <workItem from="1666966035024" duration="1802000" />
+      <workItem from="1666968136547" duration="421000" />
+      <workItem from="1667024788980" duration="1145000" />
+      <workItem from="1667036944882" duration="546000" />
+      <workItem from="1667037541219" duration="349000" />
     </task>
     <servers />
   </component>
