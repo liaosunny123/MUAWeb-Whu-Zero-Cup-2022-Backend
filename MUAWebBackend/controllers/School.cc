@@ -12,7 +12,7 @@ void School::GetSchoolList(JsonModels::School::GetSchoolList &&pGetSchoolList , 
     Model::School* school = DataController::getFullSchoolList(number);
     for(int i = 0;i < number;i++){
         Json::Value jsons;
-        jsons["index"] = school[i].pid;
+        jsons["pid"] = school[i].pid;
         jsons["name"] = school[i].author;
         jsons["img"] = school[i].url;
         json["school"][i] = jsons;

@@ -9,7 +9,7 @@ void Passage::GetPassageList(JsonModels::Passage::GetPassageList &&pGetPassageLi
     Model::Passage* Passage = DataController::getFullPassageList((Model::Category)std::stoi(category),number);
     for(int i = 0;i < number;i++){
         Json::Value jsons;
-        jsons["index"] = Passage[i].pid;
+        jsons["pid"] = Passage[i].pid;
         jsons["name"] = Passage[i].author;
         jsons["author"] = Passage[i].author;
         jsons["time"] = Passage[i].datetime;

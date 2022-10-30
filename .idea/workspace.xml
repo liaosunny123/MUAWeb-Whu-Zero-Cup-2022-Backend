@@ -23,12 +23,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a18a9ef4-d18c-4a3a-878e-5e39e26e2873" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/MUAWebBackend/jsonmodels/BannerModels.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MUAWebBackend/jsonmodels/TimelineModels.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Banner.cc" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Banner.cc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Banner.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Banner.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Passage.cc" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Passage.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/School.cc" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/School.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Timeline.cc" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Timeline.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Timeline.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Timeline.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/Banner.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/Banner.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/DataController.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/DataController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/Timeline.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/Timeline.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +83,11 @@
   }
 }</component>
   <component name="RunManager" selected="CMake 应用程序.MUAWebBackend">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MUAWebBackend" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MUAWebBackend" TARGET_NAME="MUAWebBackend" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MUAWebBackend" RUN_TARGET_NAME="MUAWebBackend">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -140,7 +153,7 @@
       <workItem from="1667094226543" duration="3087000" />
       <workItem from="1667129049614" duration="973000" />
       <workItem from="1667130170291" duration="899000" />
-      <workItem from="1667131852304" duration="1577000" />
+      <workItem from="1667131852304" duration="4768000" />
     </task>
     <servers />
   </component>

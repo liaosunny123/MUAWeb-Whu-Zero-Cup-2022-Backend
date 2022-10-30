@@ -8,8 +8,10 @@
 namespace MUAWeb::Model{
     class Timeline{
     public:
-        std::string position;
-        std::string img;
+        int pid;
+        std::string name;
+        std::string description;
+        std::string time;
     };
 }
 #endif //MAIN_CC_TIMELINE_H

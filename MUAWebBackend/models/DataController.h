@@ -40,10 +40,12 @@ namespace MUAWeb{
         //Banner:
         static void createBanner(std::string position,std::string img);
         static void removeBanner(int pid);
+        static int getBannerNumber(std::string position);
         static Model::Banner* getBanner(std::string position,int& length);
         //Timeline:
         static void createTimeline(std::string name,std::string description,std::string time);
         static void removeTimeline(int pid);
+        static int getTimelineNumber();
         static Model::Timeline* getTimeline(int& length);
 
     };

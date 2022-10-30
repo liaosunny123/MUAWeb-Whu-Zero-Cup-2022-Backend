@@ -1,6 +1,4 @@
 /*
- Navicat Premium Data Transfer
-
  Source Server         : Local
  Source Server Type    : MySQL
  Source Server Version : 80031
@@ -11,7 +9,7 @@
  Target Server Version : 80031
  File Encoding         : 65001
 
- Date: 25/10/2022 21:32:51
+ Date: 30/10/2022 21:30:42
 */
 
 SET NAMES utf8mb4;
@@ -27,6 +25,17 @@ CREATE TABLE `activitydescription` (
   `content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `editor` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `time` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Table structure for banner
+-- ----------------------------
+DROP TABLE IF EXISTS `banner`;
+CREATE TABLE `banner` (
+  `pid` int NOT NULL AUTO_INCREMENT,
+  `img` varchar(255) NOT NULL,
+  `position` varchar(255) NOT NULL,
   PRIMARY KEY (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -92,6 +101,18 @@ CREATE TABLE `schooldescription` (
   `time` varchar(255) NOT NULL,
   PRIMARY KEY (`pid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Table structure for timeline
+-- ----------------------------
+DROP TABLE IF EXISTS `timeline`;
+CREATE TABLE `timeline` (
+  `pid` int NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `time` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Table structure for user

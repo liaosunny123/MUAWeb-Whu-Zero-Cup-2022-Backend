@@ -8,6 +8,7 @@
 namespace MUAWeb::Model{
     class Banner{
     public:
+        int pid;
         std::string position;
         std::string img;
     };

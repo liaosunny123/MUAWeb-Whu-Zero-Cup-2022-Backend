@@ -9,7 +9,6 @@
 #include "MySQLParameter.h"
 #include "TokenDictionary.h"
 #include "IntilizeController.h"
-
 namespace MUAWeb {
     bool DataController::connectSQL(MYSQL &mysql) {
         mysql_init(&mysql);
@@ -447,8 +446,8 @@ namespace MUAWeb {
             throw "MysqlError";
         }
         auto *mySqlParameter = new MySQLParameter("INSERT INTO 'banner' VALUES(NULL,'@img','@position'");
-        mySqlParameter->addParameter("@img",img);
-        mySqlParameter->addParameter("@position",position);
+        mySqlParameter->addParameter("@img",std::move(img));
+        mySqlParameter->addParameter("@position",std::move(position));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         if (mysql_query(&mysql, sql.c_str())) {
@@ -459,10 +458,168 @@ namespace MUAWeb {
             mysql_close(&mysql);
         }
     }
-    static void removeBanner(int pid);
-    static Model::Banner* getBanner(std::string position,int& length);
+    void DataController::removeBanner(int pid){
+        MYSQL mysql;
+        if (!DataController::connectSQL(mysql)){
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
+        auto *mySqlParameter = new MySQLParameter("DELETE FROM `banner` where pid = '@pid';");
+        mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(pid));
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }else{
+            mysql_close(&mysql);
+        }
+    }
+    Model::Banner* DataController::getBanner(std::string position,int& length){
+        MYSQL mysql; //mysql连接
+        if (!DataController::connectSQL(mysql)){
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
+        MYSQL_RES *result = nullptr;
+        auto *mySqlParameter = new MySQLParameter("SELECT * FROM 'banner' WHERE position='@position';");
+        mySqlParameter->addParameter("@position", std::move(position));
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        MYSQL_ROW row = nullptr;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_free_result(result);
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }
+        result = mysql_store_result(&mysql);
+        length = mysql_num_rows(result);
+        auto *banner = new Model::Banner[length];
+        for (int i = 0; i < length; ++i) {
+            banner[i].pid = (int) (size_t) row[0];
+            banner[i].img = row[1];
+            banner[i].position = row[2];
+        }
+        mysql_free_result(result);
+        mysql_close(&mysql);
+        return banner;
+    }
     //Timeline:
-    static void createTimeline(std::string name,std::string description,std::string time);
-    static void removeTimeline(int pid);
-    static Model::Timeline* getTimeline(int& length);
+    void DataController::createTimeline(std::string name,std::string description,std::string time){
+        MYSQL mysql;
+        if (!DataController::connectSQL(mysql)){
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError";
+        }
+        auto *mySqlParameter = new MySQLParameter("INSERT INTO 'timeline' VALUES(NULL,'@name','@description','@time'");
+        mySqlParameter->addParameter("@img",std::move(name));
+        mySqlParameter->addParameter("@position",std::move(description));
+        mySqlParameter->addParameter("@time",std::move(time));
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }else{
+            mysql_close(&mysql);
+        }
+    }
+    void DataController::removeTimeline(int pid){
+        MYSQL mysql;
+        if (!DataController::connectSQL(mysql)){
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
+        auto *mySqlParameter = new MySQLParameter("DELETE FROM `timeline` where pid = '@pid';");
+        mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(pid));
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }else{
+            mysql_close(&mysql);
+        }
+    }
+    Model::Timeline* DataController::getTimeline(int& length){
+        MYSQL mysql; //mysql连接
+        if (!DataController::connectSQL(mysql)){
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
+        MYSQL_RES *result = nullptr;
+        auto *mySqlParameter = new MySQLParameter("SELECT * FROM 'timeline';");
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        MYSQL_ROW row = nullptr;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_free_result(result);
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }
+        result = mysql_store_result(&mysql);
+        length = mysql_num_rows(result);
+        auto *timeline = new Model::Timeline[length];
+        for (int i = 0; i < length; ++i) {
+            timeline[i].pid = (int) (size_t) row[0];
+            timeline[i].name = row[1];
+            timeline[i].description = row[2];
+            timeline[i].time = row[3];
+        }
+        mysql_free_result(result);
+        mysql_close(&mysql);
+        return timeline;
+    }
+
+    int DataController::getBannerNumber(std::string position) {
+        MYSQL mysql; //mysql连接
+        if (!DataController::connectSQL(mysql)){
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
+        MYSQL_RES *result = nullptr;
+        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM 'banner' where position='@position';");
+        mySqlParameter->addParameter("@position",position);
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_free_result(result);
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }
+        result = mysql_store_result(&mysql);
+        unsigned long long number = mysql_num_rows(result);
+        mysql_free_result(result);
+        mysql_close(&mysql);
+        return number;
+    }
+
+    int DataController::getTimelineNumber() {
+        MYSQL mysql; //mysql连接
+        if (!DataController::connectSQL(mysql)){
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
+        MYSQL_RES *result = nullptr;
+        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM 'timeline';");
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_free_result(result);
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }
+        result = mysql_store_result(&mysql);
+        unsigned long long number = mysql_num_rows(result);
+        mysql_free_result(result);
+        mysql_close(&mysql);
+        return number;
+    }
 }
