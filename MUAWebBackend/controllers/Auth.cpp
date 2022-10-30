@@ -7,9 +7,10 @@
 #include "TokenDictionary.h"
 #include "JsonError.h"
 #include "TokenListener.h"
+#include "lib/include/bcrypt.h"
 void Auth::Login(JsonModels::Auth::Login &&pLogin,
                  std::function<void (const HttpResponsePtr &)> &&callback) const{
-    if (UserController::getPassword(pLogin.username) != pLogin.password){
+    if (bcrypt::validatePassword(UserController::getPassword(pLogin.username),pLogin.password)){
         LOG_INFO << "User try to login with error password. Username:" << pLogin.username;
         callback(MUAWeb::JsonError::ErrorResponse(403,"不正确的账号或密码"));
         return;
