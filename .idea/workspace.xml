@@ -24,10 +24,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a18a9ef4-d18c-4a3a-878e-5e39e26e2873" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/Category.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/Category.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/MySQLParameter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/MySQLParameter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Search.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mua-web-frontend" beforeDir="false" afterPath="$PROJECT_DIR$/mua-web-frontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/Category.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/Category.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +137,7 @@
       <workItem from="1667024788980" duration="1145000" />
       <workItem from="1667036944882" duration="546000" />
       <workItem from="1667037541219" duration="349000" />
+      <workItem from="1667094226543" duration="3087000" />
     </task>
     <servers />
   </component>
@@ -155,17 +157,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/MUAWebBackend/controllers/Passage.cc</url>
-          <line>6</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

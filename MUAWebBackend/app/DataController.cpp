@@ -327,7 +327,6 @@ namespace MUAWeb {
         mysql_close(&mysql);
         return number;
     }
-
     Model::School *DataController::getFullSchoolList(int &length) {
         MYSQL mysql; //mysql连接
         if (!DataController::connectSQL(mysql))
@@ -355,7 +354,37 @@ namespace MUAWeb {
         }
         return schools;
     }
-    Model::Passage* DataController::search(std::string,int &){
-        
+
+    Model::Passage* DataController::search(std::string content,int & length){
+        MYSQL mysql; //mysql连接
+        if (!DataController::connectSQL(mysql))
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+        MYSQL_RES *result = nullptr;
+        auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time,'projectdescription'\n"
+                                                  "    AS `category` FROM projectdescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,'rebuilddescription'\n"
+                                                  "    AS `percentage` FROM rebuilddescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,'activitydescription' \n"
+                                                  "    AS `percentage` FROM activitydescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,'othersdescription'\n"
+                                                  "    AS `percentage` FROM othersdescription where title LIKE '%@content%' or content like '%@content%';");
+        mySqlParameter->addParameter("@content",std::move(content));
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        MYSQL_ROW row = nullptr;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_free_result(result);
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }
+        result = mysql_store_result(&mysql);
+        length = mysql_num_rows(result);
+        auto *passages = new Model::Passage[length];
+        for (int i = 0; i < length; ++i) {
+            passages[i].pid = (int) (size_t) row[0];
+            passages[i].title = row[1];
+            passages[i].author = row[2];
+            passages[i].datetime = row[3];
+            passages[i].category = Model::StringToCategory(row[4]);
+        }
+        return passages;
     }
 }
