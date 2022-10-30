@@ -3,7 +3,7 @@
 //
 #include "Search.h"
 #include "DataController.h"
-void Search::q(JsonModels::Search::Search &&pSearch, std::function<void(const HttpResponsePtr &)> &&callback,
+void Search::co(JsonModels::Search::Search &&pSearch, std::function<void(const HttpResponsePtr &)> &&callback,
                std::string q) const {
     int length;
     Model::Passage* Passage = DataController::search(q,length);

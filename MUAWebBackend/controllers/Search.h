@@ -12,8 +12,9 @@ using namespace MUAWeb;
 class Search : public drogon::HttpController<Search>{
 public:
     METHOD_LIST_BEGIN
-        METHOD_ADD(Search::q, "/co?q={content}", Post);
+        METHOD_ADD(Search::co, "/co?q={content}", Post);
     METHOD_LIST_END
-    void q(JsonModels::Search::Search &&pSearch , std::function<void (const HttpResponsePtr &)> &&callback,std::string q) const;
+    void co(JsonModels::Search::Search &&pSearch , std::function<void (const HttpResponsePtr &)> &&callback,std::string q) const;
+
 };
 #endif //MAIN_CC_SEARCH_H

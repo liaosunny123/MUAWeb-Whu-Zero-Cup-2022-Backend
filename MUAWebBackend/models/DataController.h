@@ -9,6 +9,9 @@
 #include "User.h"
 #include "Passage.h"
 #include "School.h"
+#include "Banner.h"
+#include "Timeline.h"
+
 namespace MUAWeb{
     class DataController{
     public:
@@ -35,8 +38,13 @@ namespace MUAWeb{
         //Search:
         static Model::Passage* search(std::string,int &);
         //Banner:
-        static void createBanner();
+        static void createBanner(std::string position,std::string img);
+        static void removeBanner(int pid);
+        static Model::Banner* getBanner(std::string position,int& length);
         //Timeline:
+        static void createTimeline(std::string name,std::string description,std::string time);
+        static void removeTimeline(int pid);
+        static Model::Timeline* getTimeline(int& length);
 
     };
 }

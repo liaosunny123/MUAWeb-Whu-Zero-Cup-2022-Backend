@@ -25,8 +25,10 @@ namespace MUAWeb {
 
     std::string DataController::getPassword(std::string username) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter("SELECT passwd FROM `user` WHERE username = '@username';");
         mySqlParameter->addParameter("@username", std::move(username));
         std::string sql = mySqlParameter->getSQL();
@@ -52,8 +54,10 @@ namespace MUAWeb {
 
     User DataController::getUser(std::string username) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter("SELECT * FROM `user` WHERE username = '@username';");
         mySqlParameter->addParameter("@username", std::move(username));
         std::string sql = mySqlParameter->getSQL();
@@ -80,8 +84,10 @@ namespace MUAWeb {
 
     void DataController::addUser(User user) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter("INSERT INTO `user` VALUES('@username','@password');");
         mySqlParameter->addParameter("@username", user.getUsername());
         mySqlParameter->addParameter("@password", user.getPassword());
@@ -91,13 +97,17 @@ namespace MUAWeb {
             mysql_close(&mysql);
             LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
             throw;
+        }else{
+            mysql_close(&mysql);
         }
     }
 
     void DataController::removeUser(User user) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter("DELETE FROM `user` where username = '@username';");
         mySqlParameter->addParameter("@username", user.getUsername());
         std::string sql = mySqlParameter->getSQL();
@@ -106,13 +116,17 @@ namespace MUAWeb {
             mysql_close(&mysql);
             LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
             throw;
+        }else{
+            mysql_close(&mysql);
         }
     }
 
     void DataController::editPassword(User user, std::string newpassword) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter(
                 "UPDATE `user` SET passwd='@newpassword' where username='@username';");
         mySqlParameter->addParameter("@username", user.getUsername());
@@ -123,14 +137,18 @@ namespace MUAWeb {
             mysql_close(&mysql);
             LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
             throw;
+        }else{
+            mysql_close(&mysql);
         }
     }
 
     //Passage:
     void DataController::addPassage(const Model::Passage &passage) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter(
                 "INSERT INTO '@category' VALUES(NULL,'@title','@content','@editor','@time'");
         mySqlParameter->addParameter("@title", passage.title);
@@ -144,13 +162,17 @@ namespace MUAWeb {
             mysql_close(&mysql);
             LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
             throw;
+        }else{
+            mysql_close(&mysql);
         }
     }
 
     void DataController::removePassage(const Model::Passage &passage) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter("DELETE FROM `@category` where pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(passage.pid));
         mySqlParameter->addParameter("@category", Model::CategoryToString(passage.category));
@@ -160,13 +182,17 @@ namespace MUAWeb {
             mysql_close(&mysql);
             LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
             throw;
+        }else{
+            mysql_close(&mysql);
         }
     }
 
     Model::Passage DataController::getPassage(Model::Category category, int index) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter("SELECT passwd FROM `@category` WHERE pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(index));
         mySqlParameter->addParameter("@category", Model::CategoryToString(category));
@@ -194,8 +220,10 @@ namespace MUAWeb {
 
     int DataController::getPassageNumber(Model::Category category) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid FROM @category;");
         mySqlParameter->addParameter("@category",Model::CategoryToString(category));
@@ -216,8 +244,10 @@ namespace MUAWeb {
 
     Model::Passage *DataController::getFullPassageList(Model::Category category, int &length) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time FROM @category;");
         mySqlParameter->addParameter("@category", Model::CategoryToString(category));
@@ -240,14 +270,18 @@ namespace MUAWeb {
             passages[i].datetime = row[3];
             passages[i].category = category;
         }
+        mysql_free_result(result);
+        mysql_close(&mysql);
         return passages;
     }
 
     //School:
     void DataController::addSchool(const Model::School &school) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter(
                 "INSERT INTO 'schooldescription' VALUES(NULL,'@title','@content','@url','@editor','@time'");
         mySqlParameter->addParameter("@title", school.title);
@@ -261,13 +295,17 @@ namespace MUAWeb {
             mysql_close(&mysql);
             LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
             throw;
+        }else{
+            mysql_close(&mysql);
         }
     }
 
     void DataController::removeSchool(const Model::School &school) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter("DELETE FROM `schooldescription` where pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(school.pid));
         std::string sql = mySqlParameter->getSQL();
@@ -276,13 +314,17 @@ namespace MUAWeb {
             mysql_close(&mysql);
             LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
             throw;
+        }else{
+            mysql_close(&mysql);
         }
     }
 
     Model::School DataController::getSchool(int index) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         auto *mySqlParameter = new MySQLParameter("SELECT passwd FROM `schooldescription` WHERE pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(index));
         std::string sql = mySqlParameter->getSQL();
@@ -309,8 +351,10 @@ namespace MUAWeb {
 
     int DataController::getSchoolNumber() {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid FROM 'schooldescription';");
         std::string sql = mySqlParameter->getSQL();
@@ -329,8 +373,10 @@ namespace MUAWeb {
     }
     Model::School *DataController::getFullSchoolList(int &length) {
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError.";
+        }
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time,url FROM 'schooldescription';");
         std::string sql = mySqlParameter->getSQL();
@@ -352,13 +398,17 @@ namespace MUAWeb {
             schools[i].datetime = row[3];
             schools[i].url = row[4];
         }
+        mysql_free_result(result);
+        mysql_close(&mysql);
         return schools;
     }
 
     Model::Passage* DataController::search(std::string content,int & length){
         MYSQL mysql; //mysql连接
-        if (!DataController::connectSQL(mysql))
+        if (!DataController::connectSQL(mysql)){
             LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError";
+        }
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time,'projectdescription'\n"
                                                   "    AS `category` FROM projectdescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,'rebuilddescription'\n"
@@ -385,6 +435,34 @@ namespace MUAWeb {
             passages[i].datetime = row[3];
             passages[i].category = Model::StringToCategory(row[4]);
         }
+        mysql_free_result(result);
+        mysql_close(&mysql);
         return passages;
     }
+
+    void DataController::createBanner(std::string position,std::string img){
+        MYSQL mysql;
+        if (!DataController::connectSQL(mysql)){
+            LOG_FATAL << "Cannot Carry command for error sql connect!";
+            throw "MysqlError";
+        }
+        auto *mySqlParameter = new MySQLParameter("INSERT INTO 'banner' VALUES(NULL,'@img','@position'");
+        mySqlParameter->addParameter("@img",img);
+        mySqlParameter->addParameter("@position",position);
+        std::string sql = mySqlParameter->getSQL();
+        delete mySqlParameter;
+        if (mysql_query(&mysql, sql.c_str())) {
+            mysql_close(&mysql);
+            LOG_WARN << "Cannot fetch Mysql Data! SQL:" << sql;
+            throw;
+        }else{
+            mysql_close(&mysql);
+        }
+    }
+    static void removeBanner(int pid);
+    static Model::Banner* getBanner(std::string position,int& length);
+    //Timeline:
+    static void createTimeline(std::string name,std::string description,std::string time);
+    static void removeTimeline(int pid);
+    static Model::Timeline* getTimeline(int& length);
 }
