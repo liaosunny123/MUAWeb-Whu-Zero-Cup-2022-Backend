@@ -5,7 +5,6 @@
 #include <utility>
 #include "Utility.h"
 #include "MySQLParameter.h"
-#include "mysql/mysql.h"
 namespace MUAWeb{
     MySQLParameter::MySQLParameter(std::string sql){
         this->sql = std::move(sql);

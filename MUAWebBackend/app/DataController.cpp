@@ -584,7 +584,7 @@ namespace MUAWeb {
         }
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid FROM 'banner' where position='@position';");
-        mySqlParameter->addParameter("@position",position);
+        mySqlParameter->addParameter("@position",std::move(position));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         if (mysql_query(&mysql, sql.c_str())) {
