@@ -3,6 +3,7 @@ The WebBackend for MUA.
 The program which is going to be handed in competition is developed by 2022 new WHU Student.  
 # Dir Tree  
 - models: DataModels and head file of fuction.  
+- jsonmodels: Json response models of HTTP response.  
 - app: Application of Backend.  
 - controllers: Controllers of Backend.  
 - test: Test for backend server. 
@@ -16,7 +17,7 @@ cd build
 cmake ..
 make && sudo make install
 ```  
-Beyond that, please confirm that you have following libs:libs:g++,gcc,cmake,libjsoncpp-dev,uuid-dev,openssl,libssl-dev,zlib1g-dev and boost.  
+Beyond that, please confirm that you have following libs:libs:g++,gcc,cmake,libjsoncpp-dev,uuid-dev,openssl,libssl-dev,zlib1g-dev,boost and bcrypt.  
 # How to run it  
 After you make it , you can use ".\MUAWeb" to run it.
 # Environment of the production  
