@@ -22,7 +22,7 @@ std::string MUAWeb::Model::CategoryToString(MUAWeb::Model::Category category) {
     }
 }
 
-MUAWeb::Model::Category MUAWeb::Model::StringToCategory(std::string category) {
+MUAWeb::Model::Category MUAWeb::Model::StringToCategory(const std::string& category) {
     if (category == "activitydescription"){
         return Category::activitydescription;
     }else if(category == "othersdescription"){

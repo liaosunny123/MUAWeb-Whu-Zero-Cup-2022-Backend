@@ -13,6 +13,6 @@ namespace MUAWeb::Model{
         othersdescription = 5,
     };
     std::string CategoryToString(Category);
-    MUAWeb::Model::Category StringToCategory(std::string);
+    MUAWeb::Model::Category StringToCategory(const std::string&);
 }
 #endif //MUAWEBBACKEND_CATEGORY_H

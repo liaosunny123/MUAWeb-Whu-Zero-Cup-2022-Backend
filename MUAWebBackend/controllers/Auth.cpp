@@ -49,6 +49,14 @@ void Auth::Register(JsonModels::Auth::Register &&pRegister,
         callback(MUAWeb::JsonError::ErrorResponse(404,"不能创建已经存在的用户。"));
         return;
     }
+    if (pRegister.reg_username.find_first_of("%'") != std::string::npos){
+        LOG_WARN << "User Register with fatal character in username";
+        JsonError::ErrorResponse(403,"非法字符注入");
+    }
+    if (pRegister.reg_password.find_first_of("%'") != std::string::npos){
+        LOG_WARN << "User Register with fatal character in password";
+        JsonError::ErrorResponse(403,"非法字符注入");
+    }
     User *user = new User(pRegister.reg_username,bcrypt::generateHash(pRegister.reg_password,10));
     UserController::createUser(*user);
     delete user;

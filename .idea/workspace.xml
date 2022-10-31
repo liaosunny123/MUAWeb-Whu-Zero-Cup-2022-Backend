@@ -20,12 +20,16 @@
     <configurations>
       <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
       <configuration PROFILE_NAME="Release" ENABLED="true" CONFIG_NAME="Release" />
+      <configuration PROFILE_NAME="Debug-覆盖率" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage" />
     </configurations>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a18a9ef4-d18c-4a3a-878e-5e39e26e2873" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/Category.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/Category.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/MySQLParameter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/MySQLParameter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Auth.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Auth.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/models/Category.h" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/models/Category.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +155,7 @@
       <workItem from="1667131852304" duration="4768000" />
       <workItem from="1667136974846" duration="611000" />
       <workItem from="1667137608089" duration="1388000" />
-      <workItem from="1667197944207" duration="295000" />
+      <workItem from="1667197944207" duration="2636000" />
     </task>
     <servers />
   </component>
@@ -175,5 +179,8 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="../../../桌面/Project/MUAWeb/MUAWebBackend/cmake-build-debug-" NAME="MUAWebBackend 覆盖结果" MODIFIED="1667200720826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
