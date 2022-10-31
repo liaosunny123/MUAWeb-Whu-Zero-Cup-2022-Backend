@@ -24,13 +24,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a18a9ef4-d18c-4a3a-878e-5e39e26e2873" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/lib/include/bcrypt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/lib/src/bcrypt.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/lib/src/blowfish.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/lib/src/node_blf.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MUAWebBackend/lib/src/openbsd.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Auth.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Auth.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,17 +72,17 @@
   }
 }</component>
   <component name="RunManager" selected="CMake 应用程序.MUAWebBackend">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MUAWebBackend" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MUAWebBackend" TARGET_NAME="MUAWebBackend" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MUAWebBackend" RUN_TARGET_NAME="MUAWebBackend">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="MUAWebBackend_test" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MUAWebBackend" TARGET_NAME="MUAWebBackend_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MUAWebBackend" RUN_TARGET_NAME="MUAWebBackend_test">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -157,6 +151,7 @@
       <workItem from="1667131852304" duration="4768000" />
       <workItem from="1667136974846" duration="611000" />
       <workItem from="1667137608089" duration="1388000" />
+      <workItem from="1667197944207" duration="295000" />
     </task>
     <servers />
   </component>

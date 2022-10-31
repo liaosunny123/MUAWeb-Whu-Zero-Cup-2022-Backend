@@ -10,7 +10,7 @@
 #include "lib/include/bcrypt.h"
 void Auth::Login(JsonModels::Auth::Login &&pLogin,
                  std::function<void (const HttpResponsePtr &)> &&callback) const{
-    if (bcrypt::validatePassword(UserController::getPassword(pLogin.username),pLogin.password)){
+    if (bcrypt::validatePassword(pLogin.password,UserController::getPassword(pLogin.username))){
         LOG_INFO << "User try to login with error password. Username:" << pLogin.username;
         callback(MUAWeb::JsonError::ErrorResponse(403,"不正确的账号或密码"));
         return;
@@ -49,8 +49,7 @@ void Auth::Register(JsonModels::Auth::Register &&pRegister,
         callback(MUAWeb::JsonError::ErrorResponse(404,"不能创建已经存在的用户。"));
         return;
     }
-
-    User *user = new User(pRegister.reg_username,pRegister.reg_password);
+    User *user = new User(pRegister.reg_username,bcrypt::generateHash(pRegister.reg_password,10));
     UserController::createUser(*user);
     delete user;
     Json::Value json;
