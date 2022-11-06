@@ -206,7 +206,7 @@ namespace MUAWeb {
         auto result = mysql_store_result(&mysql);
         row = mysql_fetch_row(result);
         if (row != nullptr) {
-            auto *passage = new Model::Passage((int) (size_t) row[0], category, row[1], row[2], row[3], row[4]);
+            auto *passage = new Model::Passage(std::stoi(row[0]), category, row[1], row[2], row[3], row[4]);
             mysql_free_result(result);
             mysql_close(&mysql);
             return *passage;
@@ -228,6 +228,7 @@ namespace MUAWeb {
         mySqlParameter->addParameter("@category",Model::CategoryToString(category));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
+        MYSQL_ROW row = nullptr;
         if (mysql_query(&mysql, sql.c_str())) {
             mysql_free_result(result);
             mysql_close(&mysql);
@@ -236,6 +237,7 @@ namespace MUAWeb {
         }
         result = mysql_store_result(&mysql);
         unsigned long long number = mysql_num_rows(result);
+        row = mysql_fetch_row(result);
         mysql_free_result(result);
         mysql_close(&mysql);
         return number;
@@ -261,13 +263,16 @@ namespace MUAWeb {
         }
         result = mysql_store_result(&mysql);
         length = mysql_num_rows(result);
+        row = mysql_fetch_row(result);
         auto *passages = new Model::Passage[length];
         for (int i = 0; i < length; ++i) {
-            passages[i].pid = (int) (size_t) row[0];
+            passages[i].pid = std::stoi(row[0]);
             passages[i].title = row[1];
             passages[i].author = row[2];
             passages[i].datetime = row[3];
             passages[i].category = category;
+            if(!(i == length - 1))
+                row = mysql_fetch_row(result);
         }
         mysql_free_result(result);
         mysql_close(&mysql);
@@ -337,7 +342,7 @@ namespace MUAWeb {
         auto result = mysql_store_result(&mysql);
         row = mysql_fetch_row(result);
         if (row != nullptr) {
-            auto *school = new Model::School((int) (size_t) row[0], row[3], row[1], row[2], row[4], row[5]);
+            auto *school = new Model::School(std::stoi(row[0]), row[3], row[1], row[2], row[4], row[5]);
             mysql_free_result(result);
             mysql_close(&mysql);
             return *school;
@@ -358,6 +363,7 @@ namespace MUAWeb {
         auto *mySqlParameter = new MySQLParameter("SELECT pid FROM 'schooldescription';");
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
+
         if (mysql_query(&mysql, sql.c_str())) {
             mysql_free_result(result);
             mysql_close(&mysql);
@@ -389,13 +395,16 @@ namespace MUAWeb {
         }
         result = mysql_store_result(&mysql);
         length = mysql_num_rows(result);
+        row = mysql_fetch_row(result);
         auto *schools = new Model::School[length];
         for (int i = 0; i < length; ++i) {
-            schools[i].pid = (int) (size_t) row[0];
+            schools[i].pid = std::stoi(row[0]);
             schools[i].title = row[1];
             schools[i].author = row[2];
             schools[i].datetime = row[3];
             schools[i].url = row[4];
+            if(!(i == length - 1))
+                row = mysql_fetch_row(result);
         }
         mysql_free_result(result);
         mysql_close(&mysql);
@@ -426,13 +435,16 @@ namespace MUAWeb {
         }
         result = mysql_store_result(&mysql);
         length = mysql_num_rows(result);
+        row = mysql_fetch_row(result);
         auto *passages = new Model::Passage[length];
         for (int i = 0; i < length; ++i) {
-            passages[i].pid = (int) (size_t) row[0];
+            passages[i].pid = std::stoi(row[0]);
             passages[i].title = row[1];
             passages[i].author = row[2];
             passages[i].datetime = row[3];
             passages[i].category = Model::StringToCategory(row[4]);
+            if(!(i == length - 1))
+                row = mysql_fetch_row(result);
         }
         mysql_free_result(result);
         mysql_close(&mysql);
@@ -445,7 +457,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
             throw "MysqlError";
         }
-        auto *mySqlParameter = new MySQLParameter("INSERT INTO 'banner' VALUES(NULL,'@img','@position'");
+        auto *mySqlParameter = new MySQLParameter("INSERT INTO banner VALUES(NULL,'@img','@position'");
         mySqlParameter->addParameter("@img",std::move(img));
         mySqlParameter->addParameter("@position",std::move(position));
         std::string sql = mySqlParameter->getSQL();
@@ -464,7 +476,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
             throw "MysqlError.";
         }
-        auto *mySqlParameter = new MySQLParameter("DELETE FROM `banner` where pid = '@pid';");
+        auto *mySqlParameter = new MySQLParameter("DELETE FROM banner where pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(pid));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -483,7 +495,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT * FROM 'banner' WHERE position='@position';");
+        auto *mySqlParameter = new MySQLParameter("SELECT * FROM banner WHERE position='@position';");
         mySqlParameter->addParameter("@position", std::move(position));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -496,11 +508,14 @@ namespace MUAWeb {
         }
         result = mysql_store_result(&mysql);
         length = mysql_num_rows(result);
+        row = mysql_fetch_row(result);
         auto *banner = new Model::Banner[length];
         for (int i = 0; i < length; ++i) {
-            banner[i].pid = (int) (size_t) row[0];
+            banner[i].pid = std::stoi(row[0]);
             banner[i].img = row[1];
             banner[i].position = row[2];
+            if(!(i == length - 1))
+                row = mysql_fetch_row(result);
         }
         mysql_free_result(result);
         mysql_close(&mysql);
@@ -513,7 +528,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
             throw "MysqlError";
         }
-        auto *mySqlParameter = new MySQLParameter("INSERT INTO 'timeline' VALUES(NULL,'@name','@description','@time'");
+        auto *mySqlParameter = new MySQLParameter("INSERT INTO timeline VALUES(NULL,'@name','@description','@time'");
         mySqlParameter->addParameter("@img",std::move(name));
         mySqlParameter->addParameter("@position",std::move(description));
         mySqlParameter->addParameter("@time",std::move(time));
@@ -533,7 +548,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
             throw "MysqlError.";
         }
-        auto *mySqlParameter = new MySQLParameter("DELETE FROM `timeline` where pid = '@pid';");
+        auto *mySqlParameter = new MySQLParameter("DELETE FROM timeline where pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(pid));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -552,7 +567,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT * FROM 'timeline';");
+        auto *mySqlParameter = new MySQLParameter("SELECT * FROM timeline;");
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         MYSQL_ROW row = nullptr;
@@ -564,12 +579,15 @@ namespace MUAWeb {
         }
         result = mysql_store_result(&mysql);
         length = mysql_num_rows(result);
+        row = mysql_fetch_row(result);
         auto *timeline = new Model::Timeline[length];
         for (int i = 0; i < length; ++i) {
-            timeline[i].pid = (int) (size_t) row[0];
+            timeline[i].pid = std::stoi(row[0]);
             timeline[i].name = row[1];
             timeline[i].description = row[2];
             timeline[i].time = row[3];
+            if(!(i == length - 1))
+                row = mysql_fetch_row(result);
         }
         mysql_free_result(result);
         mysql_close(&mysql);
@@ -583,7 +601,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM 'banner' where position='@position';");
+        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM banner where position='@position';");
         mySqlParameter->addParameter("@position",std::move(position));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -607,7 +625,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM 'timeline';");
+        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM timeline;");
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         if (mysql_query(&mysql, sql.c_str())) {

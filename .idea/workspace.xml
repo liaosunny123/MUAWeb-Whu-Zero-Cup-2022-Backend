@@ -27,9 +27,8 @@
     <list default="true" id="a18a9ef4-d18c-4a3a-878e-5e39e26e2873" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/DataController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/MySQLParameter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/MySQLParameter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/Passage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/Passage.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MUAWebBackend/app/School.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/app/School.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUAWebBackend/controllers/Banner.cc" beforeDir="false" afterPath="$PROJECT_DIR$/MUAWebBackend/controllers/Banner.cc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +151,8 @@
       <workItem from="1667137608089" duration="1388000" />
       <workItem from="1667197944207" duration="2636000" />
       <workItem from="1667201337220" duration="735000" />
+      <workItem from="1667530494454" duration="1007000" />
+      <workItem from="1667733736979" duration="4705000" />
     </task>
     <servers />
   </component>
