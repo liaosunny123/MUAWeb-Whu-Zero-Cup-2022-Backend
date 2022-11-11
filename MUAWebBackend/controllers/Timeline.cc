@@ -48,7 +48,7 @@ void Timeline::GetTimeline(JsonModels::Timeline::GetTimeline &&pGetTimeline , st
     Json::Value json;
     int number = DataController::getTimelineNumber();
     Model::Timeline* Timeline = DataController::getTimeline(number);
-    for(int i = 0;i < number;i++){
+    for(int i = 0;i < number;i++) {
         Json::Value jsons;
         jsons["pid"] = Timeline[i].pid;
         jsons["name"] = Timeline[i].name;

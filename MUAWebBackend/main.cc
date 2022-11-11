@@ -5,7 +5,7 @@
 int main() {
     //监听HTTP链接地址
     LOG_INFO << "MUAWeb is running on targeted url:port";
-    drogon::app().addListener("0.0.0.0",30001);
+    drogon::app().addListener("127.0.0.1",30001);
     //载入CONFIG文件
     LOG_INFO << "MUAWeb loaded ../config.json";
     drogon::app().loadConfigFile("../config.json");

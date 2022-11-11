@@ -18,7 +18,7 @@ namespace MUAWeb::JsonModels::Timeline{
     struct RemoveTimeline{
         std::string username;
         std::string token;
-        int pid;
+        int pid{};
     };
     struct GetTimeline{
 
@@ -56,6 +56,5 @@ namespace drogon{
         MUAWeb::JsonModels::Timeline::GetTimeline timeline;
         return timeline;
     }
-
 }
 #endif //MAIN_CC_TIMELINEMODELS_H

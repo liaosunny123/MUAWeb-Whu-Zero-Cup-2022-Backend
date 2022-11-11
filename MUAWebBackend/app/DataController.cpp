@@ -224,7 +224,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM @category;");
+        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM `@category`;");
         mySqlParameter->addParameter("@category",Model::CategoryToString(category));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -250,7 +250,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time FROM @category;");
+        auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time FROM `@category`;");
         mySqlParameter->addParameter("@category", Model::CategoryToString(category));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -360,7 +360,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM 'schooldescription';");
+        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM `schooldescription`;");
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
 
@@ -383,7 +383,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time,url FROM 'schooldescription';");
+        auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time,url FROM `schooldescription`;");
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         MYSQL_ROW row = nullptr;
@@ -419,9 +419,9 @@ namespace MUAWeb {
         }
         MYSQL_RES *result = nullptr;
         auto *mySqlParameter = new MySQLParameter("SELECT pid,title,editor,time,'projectdescription'\n"
-                                                  "    AS `category` FROM projectdescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,'rebuilddescription'\n"
-                                                  "    AS `percentage` FROM rebuilddescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,'activitydescription' \n"
-                                                  "    AS `percentage` FROM activitydescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,'othersdescription'\n"
+                                                  "    AS `category` FROM projectdescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,`rebuilddescription`\n"
+                                                  "    AS `percentage` FROM rebuilddescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,`activitydescription` \n"
+                                                  "    AS `percentage` FROM activitydescription where title LIKE '%@content%' or content like '%@content%' UNION SELECT pid,title,editor,time,`othersdescription`\n"
                                                   "    AS `percentage` FROM othersdescription where title LIKE '%@content%' or content like '%@content%';");
         mySqlParameter->addParameter("@content",std::move(content));
         std::string sql = mySqlParameter->getSQL();
@@ -495,7 +495,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT * FROM banner WHERE position='@position';");
+        auto *mySqlParameter = new MySQLParameter("SELECT * FROM `banner` WHERE position='@position';");
         mySqlParameter->addParameter("@position", std::move(position));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -548,7 +548,7 @@ namespace MUAWeb {
             LOG_FATAL << "Cannot Carry command for error sql connect!";
             throw "MysqlError.";
         }
-        auto *mySqlParameter = new MySQLParameter("DELETE FROM timeline where pid = '@pid';");
+        auto *mySqlParameter = new MySQLParameter("DELETE FROM `timeline` where pid = '@pid';");
         mySqlParameter->addParameter("@pid", reinterpret_cast<const char *>(pid));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -567,7 +567,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT * FROM timeline;");
+        auto *mySqlParameter = new MySQLParameter("SELECT * FROM `timeline`;");
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         MYSQL_ROW row = nullptr;
@@ -601,7 +601,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM banner where position='@position';");
+        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM `banner` where position='@position';");
         mySqlParameter->addParameter("@position",std::move(position));
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
@@ -625,7 +625,7 @@ namespace MUAWeb {
             throw "MysqlError.";
         }
         MYSQL_RES *result = nullptr;
-        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM timeline;");
+        auto *mySqlParameter = new MySQLParameter("SELECT pid FROM `timeline`;");
         std::string sql = mySqlParameter->getSQL();
         delete mySqlParameter;
         if (mysql_query(&mysql, sql.c_str())) {
